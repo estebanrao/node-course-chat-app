@@ -2,10 +2,19 @@ const generateMessage = (from, text) => {
     return {
         from,
         text,
-        createdAt: new Date().getTime()
-    }
-}
+        createdAt: new Date().getTime(),
+    };
+};
+
+const generateLocationMessage = (from, latitude, longitude) => {
+    return {
+        from,
+        url: `https://www.google.com.ar/maps?q=${latitude},${longitude}`,
+        createdAt: new Date().getTime(),
+    };
+};
 
 module.exports = {
-    generateMessage
+    generateMessage,
+    generateLocationMessage,
 };
