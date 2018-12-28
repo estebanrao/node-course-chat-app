@@ -1587,6 +1587,11 @@ mocha@3.0.2:
     mkdirp "0.5.1"
     supports-color "3.1.2"
 
+moment@2.15.1:
+  version "2.15.1"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.15.1.tgz#e979c2a29e22888e60f396f2220a6118f85cd94c"
+  integrity sha1-6XnCop4iiI5g85byIgphGPhc2Uw=
+
 ms@0.7.1:
   version "0.7.1"
   resolved "https://registry.yarnpkg.com/ms/-/ms-0.7.1.tgz#9cd13c03adbff25b65effde7ce864ee952017098"
