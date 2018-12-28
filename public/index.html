@@ -4,22 +4,65 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <title>Document</title>
+        <title>NodeJS Chat App</title>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <style>
+            body {
+                display: flex;
+                min-height: 100vh;
+                flex-direction: column;
+            }
+
+            main {
+                flex: 1 0 auto;
+            }
+
+            ol {
+                list-style: none;
+            }
+        </style>
     </head>
     <body>
-        <p>Welcome to the chat app</p>
+        <nav class="green accent-3">
+            <div class="nav-wrapper">
+                <a href="#!" class="brand-logo center"><i class="material-icons">cloud</i>NodeJS Chat App</a>
+            </div>
+        </nav>
 
-        <ul>
-            <ol id="messages"></ol>
-        </ul>
+        <main>
+            <ul>
+                <ol id="messages"></ol>
+            </ul>
+        </main>
 
-        <form id="js-message-form">
-            <input name="message" type="text" placeholder="Message"></input>
-            <button>Send</button>
-        </form>
-        <button id="js-send-location">Send Location</button>
+        <footer class="page-footer green accent-1">
+            <div class="container">
+                <div class="row">
+                    <form id="js-message-form">
+                        <div class="input-field col l6 s12">
+                            <input name="message" id="message" type="text" autofocus autocomplete="off"></input>
+                            <label for="message">Message</label>
+                        </div>
+                        <div class="col l2 s6">
+                            <button class="waves-effect waves-light btn-large">
+                                Send
+                                <i class="material-icons right">send</i>
+                            </button>
+                        </div>
+                    </form>
+                    <div class="col l4 s6">
+                        <button class="waves-effect waves-light btn-large" id="js-send-location">
+                            Send Location
+                            <i class="material-icons right">location_on</i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </footer>
 
         <script src="/socket.io/socket.io.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
         <script src="/js/index.js"></script>
     </body>
 </html>
