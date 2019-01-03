@@ -32,7 +32,7 @@
 
         <main>
             <ul>
-                <ol id="messages"></ol>
+                <ol id="js-messages"></ol>
             </ul>
         </main>
 
@@ -61,9 +61,24 @@
             </div>
         </footer>
 
+        <script id="js-message-template" type="text/template">
+            <li class="section">
+                <div><strong>{{from}}: </strong><em>{{createdAt}}</em></div>
+                <div>{{text}}</div>
+            </li>
+        </script>
+
+        <script id="js-location-message-template" type="text/template">
+            <li class="section">
+                <div><strong>{{from}}: </strong><em>{{createdAt}}</em></div>
+                <div><a href="{{url}}" target="_blank">My current location</a></div>
+            </li>
+        </script>
+
         <script src="/socket.io/socket.io.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.1/mustache.min.js"></script>
         <script src="/js/index.js"></script>
     </body>
 </html>

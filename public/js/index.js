@@ -9,23 +9,48 @@ socket.on('disconnect', () => {
 });
 
 socket.on('newMessage', message => {
+    const template = document.getElementById('js-message-template').innerHTML;
+    const messages = document.getElementById('js-messages');
     const formatedTime = moment(message.createdAt).format('h:mm a');
-    const li = document.createElement('li');
-    li.textContent = `${message.from} ${formatedTime}: ${message.text}`;
-    document.getElementById('messages').appendChild(li);
+
+    const html = Mustache.render(template, {
+        text: message.text,
+        from: message.from,
+        createdAt: formatedTime,
+    });
+
+    messages.insertAdjacentHTML('beforeend', html);
+
+    //
+    // const li = document.createElement('li');
+    // li.textContent = `${message.from} ${formatedTime}: ${message.text}`;
+    // document.getElementById('js-messages').appendChild(li);
 });
 
 socket.on('newLocationMessage', message => {
+    const template = document.getElementById('js-location-message-template').innerHTML;
+    const messages = document.getElementById('js-messages');
     const formatedTime = moment(message.createdAt).format('h:mm a');
-    const messages = document.getElementById('messages');
-    const li = document.createElement('li');
-    const a = document.createElement('a');
-    li.textContent = `${message.from} ${formatedTime}: `;
-    a.textContent = 'My current location';
-    a.setAttribute('target', '_blank');
-    a.setAttribute('href', message.url);
-    li.appendChild(a);
-    messages.appendChild(li);
+
+    const html = Mustache.render(template, {
+        text: message.text,
+        from: message.from,
+        url: message.url,
+        createdAt: formatedTime,
+    });
+
+    messages.insertAdjacentHTML('beforeend', html);
+
+    // const formatedTime = moment(message.createdAt).format('h:mm a');
+    // const messages = document.getElementById('js-messages');
+    // const li = document.createElement('li');
+    // const a = document.createElement('a');
+    // li.textContent = `${message.from} ${formatedTime}: `;
+    // a.textContent = 'My current location';
+    // a.setAttribute('target', '_blank');
+    // a.setAttribute('href', message.url);
+    // li.appendChild(a);
+    // messages.appendChild(li);
 });
 
 const messageForm = document.getElementById('js-message-form');
