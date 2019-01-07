@@ -21,6 +21,10 @@
             ol {
                 list-style: none;
             }
+
+            nav {
+                z-index: 1;
+            }
         </style>
     </head>
     <body>
@@ -31,9 +35,20 @@
         </nav>
 
         <main>
-            <ul>
-                <ol id="js-messages"></ol>
-            </ul>
+            <div class="row">
+                <div class="col m2 hide-on-small-only grey lighten-3">
+                    <h5>
+                        Users
+                    </h5>
+                    <div id="js-users"></div>
+                </div>
+
+                <div class="col m10 s12">
+                    <ul>
+                        <ol id="js-messages"></ol>
+                    </ul>
+                </div>
+            </div>
         </main>
 
         <footer class="page-footer green accent-1">

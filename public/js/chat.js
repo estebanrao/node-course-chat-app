@@ -1,11 +1,43 @@
 const socket = io();
 
+const deparam = uri => {
+    if (uri === undefined) {
+        uri = window.location.search;
+    }
+    var queryString = {};
+    uri.replace(new RegExp('([^?=&]+)(=([^&#]*))?', 'g'), function($0, $1, $2, $3) {
+        queryString[$1] = decodeURIComponent($3.replace(/\+/g, '%20'));
+    });
+    return queryString;
+};
+
 socket.on('connect', () => {
-    console.log('Connected to server');
+    const params = deparam(window.location.search);
+
+    socket.emit('join', params, err => {
+        if (err) {
+            alert(err);
+            return (window.location.href = '/');
+        }
+    });
 });
 
 socket.on('disconnect', () => {
     console.log('Disconnected from server');
+});
+
+socket.on('updateUserList', users => {
+    const usersList = document.getElementById('js-users');
+    const ol = document.createElement('ol');
+
+    users.forEach(user => {
+        const li = document.createElement('li');
+        li.textContent = `${user}`;
+        ol.appendChild(li);
+    });
+    console.log(usersList);
+    usersList.innerHTML = '';
+    usersList.appendChild(ol);
 });
 
 socket.on('newMessage', message => {
