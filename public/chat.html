@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Join - NodeJS Chat App</title>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <style>
+            body {
+                display: flex;
+                min-height: 100vh;
+                flex-direction: column;
+            }
+
+            main {
+                flex: 1 0 auto;
+            }
+
+            ol {
+                list-style: none;
+            }
+        </style>
+    </head>
+    <body>
+        <nav class="green accent-3">
+            <div class="nav-wrapper">
+                <a href="#!" class="brand-logo center"><i class="material-icons">cloud</i>NodeJS Chat App</a>
+            </div>
+        </nav>
+
+        <main>
+            <ul>
+                <ol id="js-messages"></ol>
+            </ul>
+        </main>
+
+        <footer class="page-footer green accent-1">
+            <div class="container">
+                <div class="row">
+                    <form id="js-message-form">
+                        <div class="input-field col l6 s12">
+                            <input name="message" id="message" type="text" autofocus autocomplete="off"></input>
+                            <label for="message">Message</label>
+                        </div>
+                        <div class="col l2 s6">
+                            <button class="waves-effect waves-light btn-large">
+                                Send
+                                <i class="material-icons right">send</i>
+                            </button>
+                        </div>
+                    </form>
+                    <div class="col l4 s6">
+                        <button class="waves-effect waves-light btn-large" id="js-send-location">
+                            Send Location
+                            <i class="material-icons right">location_on</i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <script id="js-message-template" type="text/template">
+            <li class="row">
+                <div><strong>{{from}}: </strong><em>{{createdAt}}</em></div>
+                <div>{{text}}</div>
+            </li>
+        </script>
+
+        <script id="js-location-message-template" type="text/template">
+            <li class="row">
+                <div><strong>{{from}}: </strong><em>{{createdAt}}</em></div>
+                <div><a href="{{url}}" target="_blank">My current location</a></div>
+            </li>
+        </script>
+
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.1/mustache.min.js"></script>
+        <script src="/js/chat.js"></script>
+    </body>
+</html>
